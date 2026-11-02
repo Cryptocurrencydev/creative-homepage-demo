@@ -9,3 +9,4 @@
 | 4. QA states, nav fix, docs, final perf run | 23:15:18 | 23:19:44 | interaction + reduced-motion screenshots, solid nav, kit README, perf/REPORT.md |
 | 5. Secret scan + publish | 23:19:44 | 23:20:06 | gitleaks dir: no leaks; public GitHub repo; final prod deploy |
 | 6. Fix: landscape bubble clipped + texture on rotate | 23:31:00 | 23:34:18 | blob radius capped by svh height, stacked layout portrait-only, texture realloc on resize |
+| 7. Fix: scroll smoothness / section overlap | 23:37:00 | 23:50:13 | JS pin replaced by CSS sticky, 1:1 scrub (was 0.7s lag), last-card hold, map built in idle without ScrollTrigger.refresh, ignoreMobileResize; verified with recorded fling video |

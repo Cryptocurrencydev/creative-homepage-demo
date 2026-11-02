@@ -149,7 +149,8 @@ button { font: inherit; color: inherit; }
 .flavor__notes { display: flex; flex-wrap: wrap; gap: 8px; position: relative; }
 
 /* Enhanced: pinned horizontal track (added by JS, motion allowed) */
-.flavors.is-pinned .flavors__pin { height: 100svh; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--nav-h) + var(--k-space-s)) 0 var(--k-space-l); }
+.flavors.is-pinned { height: calc(100svh + var(--dist, 0px) + 25svh); }
+.flavors.is-pinned .flavors__pin { position: sticky; top: 0; height: 100svh; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--nav-h) + var(--k-space-s)) 0 var(--k-space-l); }
 .flavors.is-pinned .flavors__progress { display: block; }
 .flavors.is-pinned .flavors__track { display: flex; width: max-content; height: 100%; }
 .flavors.is-pinned .flavor { width: min(82vw, 980px); min-height: 0; height: 100%; flex: none; }

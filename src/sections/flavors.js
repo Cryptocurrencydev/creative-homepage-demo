@@ -19,32 +19,38 @@ export function initFlavors({ onPick }) {
     card.addEventListener("keydown", (e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), pick()));
   });
 
+  // Pinning is done with CSS position:sticky (compositor-driven, so it never
+  // jumps on phones the way a JS pin can). JS only translates the track, 1:1
+  // with scroll (no scrub lag), then the last card holds before release.
   const mm = gsap.matchMedia();
   mm.add("(prefers-reduced-motion: no-preference)", () => {
     section.classList.add("is-pinned");
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+    const setDist = () => section.style.setProperty("--dist", dist() + "px");
+    setDist();
+    ScrollTrigger.addEventListener("refreshInit", setDist);
     const tw = gsap.to(track, {
       x: () => -dist(),
       ease: "none",
       scrollTrigger: {
-        trigger: pin, pin: true, start: "top top", end: () => "+=" + dist(),
-        scrub: 0.7, invalidateOnRefresh: true, anticipatePin: 1,
+        trigger: section, start: "top top", end: () => "+=" + dist(),
+        scrub: true, invalidateOnRefresh: true,
         onUpdate: (st) => gsap.set(bar, { scaleX: st.progress }),
       },
     });
     cards.forEach((card) => {
       const blob = card.querySelector(".flavor__blob");
       const name = card.querySelector(".flavor__name");
-      gsap.fromTo(blob, { rotate: -30, scale: 0.7, xPercent: 30 }, {
-        rotate: 20, scale: 1.08, xPercent: -10, ease: "none",
-        scrollTrigger: { containerAnimation: tw, trigger: card, start: "left right", end: "right left", scrub: true },
-      });
-      gsap.fromTo(name, { xPercent: 25 }, {
-        xPercent: -5, ease: "none",
-        scrollTrigger: { containerAnimation: tw, trigger: card, start: "left right", end: "right left", scrub: true },
-      });
+      const st = { containerAnimation: tw, trigger: card, start: "left right", end: "right left", scrub: true };
+      gsap.fromTo(blob, { rotate: -30, scale: 0.7, xPercent: 30 }, { rotate: 20, scale: 1.08, xPercent: -10, ease: "none", scrollTrigger: st });
+      gsap.fromTo(name, { xPercent: 25 }, { xPercent: -5, ease: "none", scrollTrigger: { ...st } });
     });
-    return () => { section.classList.remove("is-pinned"); gsap.set(track, { clearProps: "transform" }); };
+    return () => {
+      ScrollTrigger.removeEventListener("refreshInit", setDist);
+      section.classList.remove("is-pinned");
+      section.style.removeProperty("--dist");
+      gsap.set(track, { clearProps: "transform" });
+    };
   });
   ScrollTrigger.refresh();
 }

@@ -1,26 +1,26 @@
 # Performance report
 
 Target: https://creative-homepage-demo.vercel.app  
-Run: 2026-11-02T22:19:18.996Z  
+Run: 2026-11-02T22:50:03.586Z  
 Harness: `node scripts/perf.mjs <url>` (Playwright 1.49, Chromium new-headless, GPU via ANGLE/Metal on ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)).
 
 Throttled = Chrome DevTools "Slow 3G" (400 kbit/s, 2000 ms RTT) + 4x CPU slowdown, cache disabled. Mobile = 390x844 @2.625x, touch, Android UA.
 
 | Run | FCP ms | LCP ms | CLS | TBT ms | load ms | 3D ready ms | initial KB | streamed after load KB | hero FPS | scroll FPS | quality tier | console errors |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| mobile · throttled | 2919 | 3061 | 0.0034 | 229 | 6667 | 11283 | 105.7 | 126.1 | 119.9 | 119.1 / p95 9.2ms | medium @ dpr 1.5 | 0 |
-| mobile · unthrottled | 963 | 963 | 0 | 0 | 1209 | 1545 | 105.7 | 126.1 | 120.2 | 120.1 / p95 9ms | medium @ dpr 1.5 | 0 |
-| desktop · throttled | 2825 | 2825 | 0.004 | 150 | 6871 | 11468 | 121.3 | 126.1 | 119.4 | 119.4 / p95 9.1ms | high @ dpr 1 | 0 |
-| desktop · unthrottled | 975 | 975 | 0.0001 | 0 | 1371 | 1630 | 121.3 | 126.1 | 119.7 | 119.9 / p95 8.8ms | high @ dpr 1 | 0 |
-| mobile · reduced motion · throttled | 2770 | 2920 | 0.0034 | 2 | 6428 | poster only | 105.7 | 5.3 | 120.3 | 119.9 / p95 9.1ms | n/a (poster) @ dpr - | 0 |
+| mobile · throttled | 2717 | 2867 | 0.0034 | 110 | 6427 | 11016 | 106 | 126.1 | 120.3 | 119.7 / p95 9.1ms | medium @ dpr 1.5 | 0 |
+| mobile · unthrottled | 795 | 795 | 0 | 0 | 979 | 1198 | 105.9 | 126.1 | 120.3 | 120.1 / p95 8.9ms | medium @ dpr 1.5 | 0 |
+| desktop · throttled | 2804 | 2804 | 0.004 | 126 | 6846 | 11438 | 121.6 | 126.1 | 119.4 | 119.7 / p95 9.1ms | high @ dpr 1 | 0 |
+| desktop · unthrottled | 775 | 775 | 0.004 | 0 | 944 | 1140 | 121.6 | 126.1 | 120 | 120.1 / p95 8.9ms | high @ dpr 1 | 0 |
+| mobile · reduced motion · throttled | 2714 | 2864 | 0.0034 | 3 | 6369 | poster only | 106 | 5.3 | 120.2 | 119.8 / p95 9.1ms | n/a (poster) @ dpr - | 0 |
 
 ## Initial transfer by type (KB, compressed on the wire)
 
-- **mobile · throttled**: {"html":18,"js":56.6,"woff2":31.1}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
-- **mobile · unthrottled**: {"html":18,"js":56.5,"woff2":31.1}; after load: {"js":125.7,"svg":0.4}; three.js chunk requested: true
-- **desktop · throttled**: {"html":18,"js":56.5,"avif":15.7,"woff2":31.2}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
-- **desktop · unthrottled**: {"html":18,"js":56.6,"woff2":31.1,"avif":15.6}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
-- **mobile · reduced motion · throttled**: {"html":18,"js":56.6,"woff2":31.1}; after load: {"svg":0.4,"js":4.9}; three.js chunk requested: false
+- **mobile · throttled**: {"html":18.2,"js":56.6,"woff2":31.2}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
+- **mobile · unthrottled**: {"html":18.2,"js":56.6,"woff2":31.1}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
+- **desktop · throttled**: {"html":18.2,"js":56.6,"avif":15.7,"woff2":31.1}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
+- **desktop · unthrottled**: {"html":18.2,"avif":15.6,"woff2":31.2,"js":56.6}; after load: {"svg":0.4,"js":125.7}; three.js chunk requested: true
+- **mobile · reduced motion · throttled**: {"html":18.2,"js":56.6,"woff2":31.1}; after load: {"svg":0.4,"js":4.9}; three.js chunk requested: false
 
 ## Behaviour checks
 
@@ -35,8 +35,8 @@ Throttled = Chrome DevTools "Slow 3G" (400 kbit/s, 2000 ms RTT) + 4x CPU slowdow
 `?simslow=<ms>` adds <ms> of work per frame on the high tier, scaled by each tier's vertices x pixels, to force the FPS sampler to step down on a fast machine.
 
 - **desktop simslow=40**: {"tierHistory":["high","medium"],"settledFps":106.9,"dpr":1}
-- **desktop simslow=120**: {"tierHistory":["high","medium","low"],"settledFps":99.4,"dpr":1}
-- **mobile simslow=60**: {"tierHistory":["medium"],"settledFps":72,"dpr":1.5}
+- **desktop simslow=120**: {"tierHistory":["high","medium","low"],"settledFps":99.3,"dpr":1}
+- **mobile simslow=60**: {"tierHistory":["medium"],"settledFps":71.9,"dpr":1.5}
 - **visibility**: {"runningVisible":true,"runningWhenHidden":false,"runningAfterReturn":true}
 
 ## Caveat

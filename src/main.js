@@ -12,6 +12,10 @@ import { initFlavors } from "./sections/flavors.js";
 import { initKinetic } from "./sections/kinetic.js";
 import { initFooter } from "./sections/footer.js";
 
+// Phones resize the viewport when the URL bar shows/hides; don't recompute
+// every trigger mid-scroll for that.
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 const stats = (window.__wobl = window.__wobl || {});
 const root = document.documentElement;
 const params = new URLSearchParams(location.search);
@@ -135,7 +139,12 @@ const mapEl = document.querySelector("[data-map]");
 const mio = new IntersectionObserver(([e]) => {
   if (!e.isIntersecting) return;
   mio.disconnect();
-  import("./sections/map.js").then((m) => { m.initMap(); ScrollTrigger.refresh(); stats.mapReady = performance.now(); });
+  // build in idle time; the map box has a fixed height, so no ScrollTrigger
+  // refresh is needed (a refresh mid-scroll recomputes every trigger = hitch)
+  import("./sections/map.js").then((m) => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+    idle(() => { m.initMap(); stats.mapReady = performance.now(); }, { timeout: 800 });
+  });
 }, { rootMargin: "1200px 0px" });
 mio.observe(mapEl);
 
