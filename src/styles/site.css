@@ -2,7 +2,8 @@
 :root {
   --flavor-bg: #ffd8c9;
   --nav-h: 64px;
-  --blob-r: clamp(128px, min(40vw, 29vh), 300px);
+  /* bounded by width AND height so short/landscape screens never clip it */
+  --blob-r: min(clamp(128px, min(40vw, 29vh), 300px), 34svh);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -58,7 +59,7 @@ button { font: inherit; color: inherit; }
 .hero__title {
   grid-area: 1 / 1;
   font-weight: 800;
-  font-size: var(--k-step-hero);
+  font-size: min(var(--k-step-hero), 46svh);
   line-height: 1;
   letter-spacing: -0.06em;
   font-optical-sizing: auto;
@@ -67,8 +68,8 @@ button { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 .hero__word > span, .hero__line > span { display: inline; }
-@media (max-width: 767px) {
-  :root { --blob-r: clamp(104px, 30vw, 150px); }
+@media (max-width: 767px) and (orientation: portrait) {
+  :root { --blob-r: min(clamp(104px, 30vw, 150px), 30svh); }
   .hero__title { font-size: min(50vw, 34vh); line-height: 0.8; text-align: center; }
   .hero__word > .hero__line { display: block; }
 }
@@ -241,3 +242,11 @@ button { font: inherit; color: inherit; }
 /* nav turns solid once the hero is behind you */
 .nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--k-paper); border-bottom: 2px solid var(--k-ink); transform: translateY(-101%); transition: transform .4s var(--k-ease-out); }
 .nav.is-solid::before { transform: none; }
+
+/* short landscape phones: keep the corner copy out of the bubble's way */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero__hint, .hero__eyebrow { display: none; }
+  .hero__tag { font-size: var(--k-step-0); bottom: 14px; }
+  .hero__now { bottom: 14px; }
+  .hero__now strong { font-size: var(--k-step-0); }
+}

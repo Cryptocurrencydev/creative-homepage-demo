@@ -112,7 +112,10 @@ export async function createHero({ stage, title, poster, flavor, capture = false
 
   function drawBackground() {
     const buf = uniforms.uRes.value;
-    bgCanvas.width = buf.x; bgCanvas.height = buf.y;
+    if (bgCanvas.width !== buf.x || bgCanvas.height !== buf.y) {
+      bgCanvas.width = buf.x; bgCanvas.height = buf.y;
+      bgTex.dispose(); // three allocates immutable storage; a new size needs a fresh upload
+    }
     const s = buf.x / W;
     const ctx = bgCtx;
     ctx.setTransform(s, 0, 0, s, 0, 0);

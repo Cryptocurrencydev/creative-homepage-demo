@@ -8,3 +8,4 @@
 | 3. Deploy + perf harness + optimisation | 23:02:25 | 23:15:18 | Vercel prod; CPU 4x + Slow 3G runs; inlined CSS (FCP 5.0s to 2.8s), inlined mobile poster (LCP 5.25s to 2.94s), font 77KB to 32KB, dedup font/CSS |
 | 4. QA states, nav fix, docs, final perf run | 23:15:18 | 23:19:44 | interaction + reduced-motion screenshots, solid nav, kit README, perf/REPORT.md |
 | 5. Secret scan + publish | 23:19:44 | 23:20:06 | gitleaks dir: no leaks; public GitHub repo; final prod deploy |
+| 6. Fix: landscape bubble clipped + texture on rotate | 23:31:00 | 23:34:18 | blob radius capped by svh height, stacked layout portrait-only, texture realloc on resize |
