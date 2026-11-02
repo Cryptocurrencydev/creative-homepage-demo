@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WOBL Style &amp; Motion Kit</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="kitpage">
+  <header class="kp-head">
+    <a href="/" class="k-btn k-btn--ghost" data-cursor="back">← Homepage</a>
+    <p class="k-eyebrow">Deliverable · v1.0</p>
+    <h1 class="k-display" data-reveal>Style &amp; Motion Kit</h1>
+    <p class="k-body">Two framework-free modules: <code>src/kit/style/kit.css</code> (tokens, type scale, spacing, buttons) and <code>src/kit/motion/</code> (cursor, transition, reveal, hover). Every motion primitive respects <code>prefers-reduced-motion</code>.</p>
+  </header>
+
+  <section class="kp-sec"><h2 class="k-h3">Color</h2><div class="kp-swatches" data-swatches></div></section>
+
+  <section class="kp-sec"><h2 class="k-h3">Type scale</h2>
+    <div class="kp-type">
+      <p style="font:800 var(--k-step-5)/1 var(--k-font);letter-spacing:-.04em">Step 5 · Wobble</p>
+      <p style="font:800 var(--k-step-4)/1 var(--k-font);letter-spacing:-.03em">Step 4 · Wobble</p>
+      <p style="font:700 var(--k-step-3)/1.1 var(--k-font)">Step 3 · Wobble</p>
+      <p style="font:700 var(--k-step-2)/1.1 var(--k-font)">Step 2 · Wobble</p>
+      <p style="font:600 var(--k-step-1)/1.2 var(--k-font)">Step 1 · Wobble</p>
+      <p class="k-body">Step 0 · Body copy for paragraphs and UI.</p>
+      <p class="k-small">Step −1 · Small print and captions.</p>
+      <p class="k-eyebrow">Eyebrow · mono label</p>
+    </div>
+  </section>
+
+  <section class="kp-sec"><h2 class="k-h3">Spacing</h2><div class="kp-space" data-space></div></section>
+
+  <section class="kp-sec"><h2 class="k-h3">Buttons</h2>
+    <div class="kp-row">
+      <button class="k-btn" data-magnetic>Primary</button>
+      <button class="k-btn k-btn--ink" data-magnetic>Ink</button>
+      <button class="k-btn k-btn--ghost" data-magnetic><span data-roll>Ghost · text roll</span></button>
+      <button class="k-btn k-btn--icon" aria-label="Add">+</button>
+      <button class="k-btn" disabled>Disabled</button>
+      <span class="k-chip">Chip</span>
+    </div>
+  </section>
+
+  <section class="kp-sec"><h2 class="k-h3">Motion</h2>
+    <div class="kp-grid">
+      <div class="kp-card" data-cursor="hello"><strong>Cursor</strong><span>Hover me: the ring grows and shows a label from <code>data-cursor</code>.</span></div>
+      <button class="kp-card" type="button" data-demo-transition><strong>Transition</strong><span>Click to run the wipe: cover, swap, reveal.</span></button>
+      <div class="kp-card" data-squish><strong>Squish</strong><span>Press and hold, then let go.</span></div>
+      <div class="kp-card"><strong>Reveal</strong><span>The headings on this page rise in through a mask as they scroll in.</span></div>
+    </div>
+    <p class="kp-scrub" data-scrub>Scroll this paragraph into view and every word lights up as you go. Same primitive as the homepage manifesto.</p>
+  </section>
+
+  <section class="kp-sec"><h2 class="k-h3" data-reveal>Usage</h2>
+<pre class="kp-code"><code>import "./kit/style/kit.css";
+import "./kit/motion/motion.css";
+import { createCursor, createTransition, reveal,
+         scrubWords, magnetic, squish } from "./kit/motion/index.js";
+
+createCursor();                       // auto-off on touch
+const t = createTransition({ text: "wobble…" });
+t.bindLinks('a[href^="#"][data-transition]');
+reveal("[data-reveal]", { split: "words" });
+scrubWords(document.querySelector(".manifesto"));
+document.querySelectorAll(".k-btn").forEach((b) => { magnetic(b); squish(b); });</code></pre>
+  </section>
+  <footer class="kp-sec k-small">Demo by DC Tech</footer>
+  <script type="module" src="/src/kit-demo.js"></script>
+</body>
+</html>

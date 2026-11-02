@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>WOBL: soda you can almost hold</title>
+  <meta name="description" content="WOBL is a jelly soda that wobbles. Four flavors, seven Wobl Houses in Port Sundermouth. A fictional brand concept by DC Tech." />
+  <meta name="theme-color" content="#ffd8c9" />
+  <meta property="og:title" content="WOBL: soda you can almost hold" />
+  <meta property="og:description" content="Poke the jelly. Find a Wobl House. Send a wobble to a friend." />
+  <meta property="og:image" content="/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" href="/poster/blob-m.avif" type="image/avif" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/poster/blob-d.avif" type="image/avif" media="(min-width: 768px)" fetchpriority="high" />
+  <script>
+    // Tiny inline boot: set flavor from ?flavor= before first paint (no flash), flag JS.
+    (function () {
+      var d = document.documentElement; d.classList.add("js");
+      var f = new URLSearchParams(location.search).get("flavor");
+      var m = { orange: ["#ff4b2b", "#ffd8c9"], lime: ["#c4f135", "#ecf9c4"], grape: ["#7a5cff", "#ddd5ff"], gum: ["#ff8bd0", "#ffe0f2"] };
+      if (m[f]) { d.style.setProperty("--k-accent", m[f][0]); d.style.setProperty("--flavor-bg", m[f][1]); d.dataset.flavor = f; }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip k-btn k-btn--ink" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="nav__logo" href="#top" aria-label="WOBL home" data-transition>WOBL<sup>®</sup></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#flavors" data-transition>Flavors</a>
+      <a href="#houses" data-transition>Houses</a>
+      <a href="#share" data-transition>Share</a>
+    </nav>
+    <button class="nav__flavor k-btn k-btn--ghost" type="button" data-flavor-next data-cursor="next">
+      <span class="swatch" aria-hidden="true"></span><span data-flavor-label>Blood Orange</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- 1. HERO ----------------------------------------------------------- -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__stage" data-hero-stage>
+        <h1 class="hero__title" id="hero-title" data-hero-title>
+          <span class="k-sr-only">WOBL, soda you can almost hold</span>
+          <span class="hero__word" aria-hidden="true"><span class="hero__line"><span>W</span><span>O</span></span><span class="hero__line"><span>B</span><span>L</span></span></span>
+        </h1>
+        <picture class="hero__poster" data-hero-poster>
+          <source media="(max-width: 767px)" srcset="/poster/blob-m.avif" type="image/avif" />
+          <source media="(max-width: 767px)" srcset="/poster/blob-m.webp" type="image/webp" />
+          <source srcset="/poster/blob-d.avif" type="image/avif" />
+          <img src="/poster/blob-d.webp" alt="" width="960" height="960" fetchpriority="high" decoding="async" />
+        </picture>
+        <button class="hero__hit" type="button" data-flavor-next data-cursor="poke" aria-label="Poke the jelly to change flavor"></button>
+      </div>
+      <p class="hero__eyebrow k-eyebrow">Jelly soda · est. 2026 · Port Sundermouth</p>
+      <p class="hero__tag">Soda you can<br /><em>almost</em> hold.</p>
+      <div class="hero__now">
+        <span class="k-eyebrow">Now pouring</span>
+        <strong data-flavor-name>Blood Orange Bounce</strong>
+        <span class="hero__hint" data-hero-hint>Poke the jelly · tap to change flavor</span>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><span>scroll</span></div>
+    </section>
+
+    <!-- 2. MANIFESTO ------------------------------------------------------ -->
+    <section class="manifesto" aria-label="What is WOBL">
+      <p class="k-eyebrow">01 / The idea</p>
+      <p class="manifesto__text" data-scrub>
+        We made a soda so thick it wobbles. Real fruit, a little seaweed, a lot of fizz.
+        It jiggles in the glass, pops on your tongue, and makes everyone at the table ask what you're drinking.
+      </p>
+    </section>
+
+    <!-- 3. FLAVORS (pinned horizontal) ----------------------------------- -->
+    <section class="flavors" id="flavors" aria-labelledby="flavors-title">
+      <div class="flavors__pin" data-flavors-pin>
+        <header class="flavors__head">
+          <p class="k-eyebrow">02 / Four flavors</p>
+          <h2 class="k-h2" id="flavors-title" data-reveal>Pick your wobble</h2>
+          <div class="flavors__progress" aria-hidden="true"><span data-flavors-bar></span></div>
+        </header>
+        <ol class="flavors__track" data-flavors-track>
+          <!-- filled by markup below for no-JS; enhanced in JS -->
+          <li class="flavor" style="--c:#ff4b2b;--b:#ffd8c9" data-flavor-card="orange">
+            <span class="flavor__num">01</span>
+            <svg class="flavor__blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M44 52C68 18 134 14 162 46s26 92-8 116-98 26-124-8S20 86 44 52z"/><ellipse cx="78" cy="62" rx="22" ry="12" /></svg>
+            <h3 class="flavor__name">Blood Orange Bounce</h3>
+            <ul class="flavor__notes"><li class="k-chip">sicilian orange</li><li class="k-chip">pink pepper</li><li class="k-chip">38 kcal</li></ul>
+          </li>
+          <li class="flavor" style="--c:#c4f135;--b:#ecf9c4" data-flavor-card="lime">
+            <span class="flavor__num">02</span>
+            <svg class="flavor__blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M40 70C52 28 120 8 156 40s30 76 4 108-86 40-118 12S28 112 40 70z"/><ellipse cx="80" cy="58" rx="24" ry="12" /></svg>
+            <h3 class="flavor__name">Lime Quake</h3>
+            <ul class="flavor__notes"><li class="k-chip">key lime</li><li class="k-chip">sea salt</li><li class="k-chip">31 kcal</li></ul>
+          </li>
+          <li class="flavor" style="--c:#7a5cff;--b:#ddd5ff" data-flavor-card="grape">
+            <span class="flavor__num">03</span>
+            <svg class="flavor__blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M52 40C88 16 150 26 166 66s0 90-38 104-92 8-110-30 0-76 34-100z"/><ellipse cx="86" cy="56" rx="22" ry="11" /></svg>
+            <h3 class="flavor__name">Grape Gravity</h3>
+            <ul class="flavor__notes"><li class="k-chip">concord grape</li><li class="k-chip">lavender</li><li class="k-chip">42 kcal</li></ul>
+          </li>
+          <li class="flavor" style="--c:#ff8bd0;--b:#ffe0f2" data-flavor-card="gum">
+            <span class="flavor__num">04</span>
+            <svg class="flavor__blob" viewBox="0 0 200 200" aria-hidden="true"><path d="M36 60C60 22 128 18 158 50s28 84-4 110-94 24-120-6S12 98 36 60z"/><ellipse cx="76" cy="60" rx="22" ry="12" /></svg>
+            <h3 class="flavor__name">Pink Pomelo Pop</h3>
+            <ul class="flavor__notes"><li class="k-chip">pomelo</li><li class="k-chip">rose</li><li class="k-chip">35 kcal</li></ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. MARQUEE + STATS ------------------------------------------------ -->
+    <section class="kinetic" aria-label="WOBL in numbers">
+      <div class="marquee" aria-hidden="true" data-marquee>
+        <div class="marquee__row" data-dir="1"><span>JIGGLE · POP · FIZZ · WOBBLE · </span><span>JIGGLE · POP · FIZZ · WOBBLE · </span></div>
+        <div class="marquee__row marquee__row--alt" data-dir="-1"><span>NO SUGAR CRASH · REAL FRUIT · </span><span>NO SUGAR CRASH · REAL FRUIT · </span></div>
+      </div>
+      <ul class="stats">
+        <li><strong data-count="38">38</strong><span>kcal a can, tops</span></li>
+        <li><strong data-count="4">4</strong><span>flavors, all wobbly</span></li>
+        <li><strong data-count="7">7</strong><span>Wobl Houses in town</span></li>
+        <li><strong data-count="0">0</strong><span>artificial anything</span></li>
+      </ul>
+    </section>
+
+    <!-- 5. MAP ------------------------------------------------------------ -->
+    <section class="houses" id="houses" aria-labelledby="houses-title">
+      <header class="houses__head">
+        <p class="k-eyebrow">03 / Wobl Houses</p>
+        <h2 class="k-h2" id="houses-title" data-reveal>Come wobble in person</h2>
+        <p class="k-body houses__lede">Seven houses across Port Sundermouth. Drag the map, tap a pin.</p>
+      </header>
+      <div class="map" data-map>
+        <div class="map__viewport" data-map-viewport data-cursor="drag">
+          <div class="map__layer" data-map-layer></div>
+        </div>
+        <div class="map__ui">
+          <button class="k-btn k-btn--icon map__zoom" type="button" data-map-zoom="1" aria-label="Zoom in">+</button>
+          <button class="k-btn k-btn--icon map__zoom" type="button" data-map-zoom="-1" aria-label="Zoom out">−</button>
+        </div>
+        <article class="map__card" data-map-card aria-live="polite" hidden></article>
+      </div>
+      <!-- Always-available list: no-JS, reduced motion and screen readers -->
+      <ol class="houses__list" data-houses-list>
+        <li><strong>The Jiggle Dock</strong> · Harbourside · 10:00 to 23:00</li>
+        <li><strong>Lantern Row</strong> · Old Town · 12:00 to 01:00</li>
+        <li><strong>Fizz Garden</strong> · Mill Park · 09:00 to 20:00</li>
+        <li><strong>The Quiver</strong> · Canal Quarter · 16:00 to 02:00</li>
+        <li><strong>Bounce Hall</strong> · University Hill · 08:00 to 22:00</li>
+        <li><strong>Rooftop Ripple</strong> · Downtown · 15:00 to 00:00</li>
+        <li><strong>Night Shift Kiosk</strong> · Central Station · open all night</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- 6. FOOTER ----------------------------------------------------------- -->
+  <footer class="footer" id="share">
+    <div class="footer__cta">
+      <p class="k-eyebrow">04 / Pass it on</p>
+      <h2 class="k-h2" data-reveal>Send a wobble to a friend</h2>
+      <p class="k-body">They'll open this page already poured in your flavor.</p>
+      <button class="k-btn k-btn--ink" type="button" data-share data-cursor="send"><span data-share-label>Send a wobble</span></button>
+    </div>
+    <div class="footer__word" data-jiggle aria-label="WOBL" role="img">
+      <span>W</span><span>O</span><span>B</span><span>L</span>
+    </div>
+    <div class="footer__base">
+      <span>© 2026 WOBL Drinks Co., a fictional brand</span>
+      <a href="/kit.html" class="footer__kit">Style &amp; motion kit</a>
+      <span class="footer__credit">Demo by DC Tech</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

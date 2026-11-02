@@ -1,0 +1,8 @@
+node_modules
+dist
+.vercel
+.phase
+.DS_Store
+perf/raw
+*.log
+.env*

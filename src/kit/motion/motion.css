@@ -1,0 +1,36 @@
+/* Motion kit styles: cursor, transition, split text, text roll. */
+.has-k-cursor, .has-k-cursor * { cursor: none !important; }
+.k-cursor { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0; transition: opacity .3s; }
+.k-cursor.is-visible { opacity: 1; }
+.k-cursor__dot, .k-cursor__ring { position: fixed; left: 0; top: 0; will-change: transform; }
+.k-cursor__dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--k-ink); }
+.k-cursor__ring {
+  width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+  border: 1.5px solid var(--k-ink); display: grid; place-items: center;
+  transition: width .35s var(--k-ease-squish), height .35s var(--k-ease-squish), margin .35s var(--k-ease-squish), background-color .3s, border-color .3s;
+}
+.k-cursor.is-hover .k-cursor__ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: color-mix(in srgb, var(--k-accent) 30%, transparent); }
+.k-cursor.has-label .k-cursor__ring { width: 88px; height: 88px; margin: -44px 0 0 -44px; background: var(--k-ink); border-color: var(--k-ink); }
+.k-cursor.has-label .k-cursor__dot { opacity: 0; }
+.k-cursor.is-down .k-cursor__ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; }
+.k-cursor__label { font: 700 13px/1 var(--k-font); color: var(--k-paper); text-transform: lowercase; opacity: 0; transition: opacity .2s; }
+.k-cursor.has-label .k-cursor__label { opacity: 1; }
+
+.k-transition { position: fixed; inset: 0; z-index: 9000; pointer-events: none; visibility: hidden; overflow: hidden; }
+.k-transition.is-active { visibility: visible; pointer-events: auto; }
+.k-transition__panel {
+  position: absolute; inset: -12vh 0; background: var(--k-transition-bg, var(--k-ink));
+  border-radius: 50% 50% 50% 50% / 12vh 12vh 12vh 12vh; transform: translateY(105%);
+  display: grid; place-items: center;
+}
+.k-transition__text { font: 800 var(--k-step-4)/1 var(--k-font); color: var(--k-paper); letter-spacing: -0.04em; }
+
+.k-split { display: inline-block; overflow: clip; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.k-split__inner { display: inline-block; will-change: transform; }
+
+.k-roll { display: inline-grid; overflow: hidden; line-height: 1.15; height: 1.15em; vertical-align: middle; }
+.k-roll > span { grid-area: 1 / 1; transition: transform .45s var(--k-ease-out); }
+.k-roll > span + span { transform: translateY(110%); }
+:is(a, button):hover .k-roll > span:first-child { transform: translateY(-110%); }
+:is(a, button):hover .k-roll > span + span { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .k-roll > span { transition: none; } }

@@ -1,0 +1,24 @@
+// Screenshots of interactive states: flavor change, map card, reduced motion.
+import { chromium } from "playwright";
+const base = process.argv[2], out = process.argv[3];
+const b = await chromium.launch({ channel: "chromium", args: ["--use-angle=metal", "--enable-gpu"] });
+const mob = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true };
+let ctx = await b.newContext(mob); let p = await ctx.newPage();
+await p.goto(base + "/"); await p.waitForFunction(() => window.__wobl?.heroReady); await p.waitForTimeout(1200);
+await p.touchscreen.tap(195, 380); await p.waitForTimeout(250); await p.touchscreen.tap(195, 380); await p.waitForTimeout(1300);
+await p.screenshot({ path: `${out}/flavor-grape-m.png` });
+await p.evaluate(() => document.querySelector("[data-map]").scrollIntoView({ block: "center" })); await p.waitForTimeout(3000);
+const pt = await p.evaluate(() => { const r = document.querySelectorAll(".pin")[1].querySelector(".pin__drop").getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });
+await p.touchscreen.tap(pt.x, pt.y); await p.waitForTimeout(1200);
+await p.screenshot({ path: `${out}/map-card-m.png` });
+await ctx.close();
+ctx = await b.newContext({ ...mob, reducedMotion: "reduce" }); p = await ctx.newPage();
+await p.goto(base + "/"); await p.waitForTimeout(2000);
+await p.screenshot({ path: `${out}/rm-hero-m.png` });
+await p.evaluate(() => document.querySelector(".flavors").scrollIntoView()); await p.waitForTimeout(800);
+await p.screenshot({ path: `${out}/rm-flavors-m.png` });
+await ctx.close();
+ctx = await b.newContext({ viewport: { width: 1440, height: 900 } }); p = await ctx.newPage();
+await p.goto(base + "/kit"); await p.waitForTimeout(1500);
+await p.screenshot({ path: `${out}/kit-d.png` });
+await b.close();

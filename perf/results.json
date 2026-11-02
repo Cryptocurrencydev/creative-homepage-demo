@@ -1,0 +1,392 @@
+{
+  "base": "https://creative-homepage-demo.vercel.app",
+  "date": "2026-11-02T22:19:18.996Z",
+  "results": [
+    {
+      "name": "mobile · throttled",
+      "throttle": "CPU 4x + Slow 3G (400kbps, 2000ms RTT)",
+      "reducedMotion": false,
+      "nav": {
+        "ttfb": 1060,
+        "dcl": 6647,
+        "load": 6667
+      },
+      "paint": {
+        "fcp": 2919,
+        "lcp": 3061,
+        "lcpEl": "IMG.",
+        "cls": 0.0034,
+        "tbt": 229,
+        "longTasks": 3
+      },
+      "heroReadyMs": 11283,
+      "hero": {
+        "tier": "medium",
+        "tierHistory": [
+          "medium"
+        ],
+        "dpr": 1.5,
+        "sampledFps": 121,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "webgl": true,
+        "live": true
+      },
+      "fps": {
+        "heroIdle": {
+          "fps": 119.9,
+          "frames": 360,
+          "p95ms": 9.2,
+          "worstMs": 15.9,
+          "janky": 0
+        },
+        "scroll": {
+          "fps": 119.1,
+          "frames": 834,
+          "p95ms": 9.2,
+          "worstMs": 57.6,
+          "janky": 1
+        }
+      },
+      "after": {
+        "heroRunningOffscreen": false,
+        "flavorsPinned": true,
+        "lenis": false,
+        "mapPins": 7,
+        "manifestoMinOpacity": 1,
+        "footerCredit": "Demo by DC Tech"
+      },
+      "mapCard": "Lantern Row",
+      "bytes": {
+        "initialKB": 105.7,
+        "initialByType": {
+          "html": 18,
+          "js": 56.6,
+          "woff2": 31.1
+        },
+        "initialRequests": 4,
+        "afterLoadKB": 126.1,
+        "afterLoadByType": {
+          "svg": 0.4,
+          "js": 125.7
+        },
+        "sceneChunkRequested": true
+      },
+      "consoleErrors": []
+    },
+    {
+      "name": "mobile · unthrottled",
+      "throttle": "none",
+      "reducedMotion": false,
+      "nav": {
+        "ttfb": 791,
+        "dcl": 1202,
+        "load": 1209
+      },
+      "paint": {
+        "fcp": 963,
+        "lcp": 963,
+        "lcpEl": "IMG.",
+        "cls": 0,
+        "tbt": 0,
+        "longTasks": 0
+      },
+      "heroReadyMs": 1545,
+      "hero": {
+        "tier": "medium",
+        "tierHistory": [
+          "medium"
+        ],
+        "dpr": 1.5,
+        "sampledFps": 120,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "webgl": true,
+        "live": true
+      },
+      "fps": {
+        "heroIdle": {
+          "fps": 120.2,
+          "frames": 361,
+          "p95ms": 9.1,
+          "worstMs": 9.4,
+          "janky": 0
+        },
+        "scroll": {
+          "fps": 120.1,
+          "frames": 841,
+          "p95ms": 9,
+          "worstMs": 9.4,
+          "janky": 0
+        }
+      },
+      "after": {
+        "heroRunningOffscreen": false,
+        "flavorsPinned": true,
+        "lenis": false,
+        "mapPins": 7,
+        "manifestoMinOpacity": 1,
+        "footerCredit": "Demo by DC Tech"
+      },
+      "mapCard": "Lantern Row",
+      "bytes": {
+        "initialKB": 105.7,
+        "initialByType": {
+          "html": 18,
+          "js": 56.5,
+          "woff2": 31.1
+        },
+        "initialRequests": 4,
+        "afterLoadKB": 126.1,
+        "afterLoadByType": {
+          "js": 125.7,
+          "svg": 0.4
+        },
+        "sceneChunkRequested": true
+      },
+      "consoleErrors": []
+    },
+    {
+      "name": "desktop · throttled",
+      "throttle": "CPU 4x + Slow 3G (400kbps, 2000ms RTT)",
+      "reducedMotion": false,
+      "nav": {
+        "ttfb": 790,
+        "dcl": 6854,
+        "load": 6871
+      },
+      "paint": {
+        "fcp": 2825,
+        "lcp": 2825,
+        "lcpEl": "H1.hero__title",
+        "cls": 0.004,
+        "tbt": 150,
+        "longTasks": 3
+      },
+      "heroReadyMs": 11468,
+      "hero": {
+        "tier": "high",
+        "tierHistory": [
+          "high"
+        ],
+        "dpr": 1,
+        "sampledFps": 120,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "webgl": true,
+        "live": true
+      },
+      "fps": {
+        "heroIdle": {
+          "fps": 119.4,
+          "frames": 359,
+          "p95ms": 9.2,
+          "worstMs": 24.8,
+          "janky": 0
+        },
+        "scroll": {
+          "fps": 119.4,
+          "frames": 836,
+          "p95ms": 9.1,
+          "worstMs": 42.4,
+          "janky": 1
+        }
+      },
+      "after": {
+        "heroRunningOffscreen": false,
+        "flavorsPinned": true,
+        "lenis": true,
+        "mapPins": 7,
+        "manifestoMinOpacity": 1,
+        "footerCredit": "Demo by DC Tech"
+      },
+      "mapCard": "The Jiggle Dock",
+      "bytes": {
+        "initialKB": 121.3,
+        "initialByType": {
+          "html": 18,
+          "js": 56.5,
+          "avif": 15.7,
+          "woff2": 31.2
+        },
+        "initialRequests": 5,
+        "afterLoadKB": 126.1,
+        "afterLoadByType": {
+          "svg": 0.4,
+          "js": 125.7
+        },
+        "sceneChunkRequested": true
+      },
+      "consoleErrors": []
+    },
+    {
+      "name": "desktop · unthrottled",
+      "throttle": "none",
+      "reducedMotion": false,
+      "nav": {
+        "ttfb": 754,
+        "dcl": 1363,
+        "load": 1371
+      },
+      "paint": {
+        "fcp": 975,
+        "lcp": 975,
+        "lcpEl": "H1.hero__title",
+        "cls": 0.0001,
+        "tbt": 0,
+        "longTasks": 0
+      },
+      "heroReadyMs": 1630,
+      "hero": {
+        "tier": "high",
+        "tierHistory": [
+          "high"
+        ],
+        "dpr": 1,
+        "sampledFps": 120,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "webgl": true,
+        "live": true
+      },
+      "fps": {
+        "heroIdle": {
+          "fps": 119.7,
+          "frames": 360,
+          "p95ms": 9.1,
+          "worstMs": 17,
+          "janky": 0
+        },
+        "scroll": {
+          "fps": 119.9,
+          "frames": 840,
+          "p95ms": 8.8,
+          "worstMs": 16.7,
+          "janky": 0
+        }
+      },
+      "after": {
+        "heroRunningOffscreen": false,
+        "flavorsPinned": true,
+        "lenis": true,
+        "mapPins": 7,
+        "manifestoMinOpacity": 1,
+        "footerCredit": "Demo by DC Tech"
+      },
+      "mapCard": "The Jiggle Dock",
+      "bytes": {
+        "initialKB": 121.3,
+        "initialByType": {
+          "html": 18,
+          "js": 56.6,
+          "woff2": 31.1,
+          "avif": 15.6
+        },
+        "initialRequests": 5,
+        "afterLoadKB": 126.1,
+        "afterLoadByType": {
+          "svg": 0.4,
+          "js": 125.7
+        },
+        "sceneChunkRequested": true
+      },
+      "consoleErrors": []
+    },
+    {
+      "name": "mobile · reduced motion · throttled",
+      "throttle": "CPU 4x + Slow 3G (400kbps, 2000ms RTT)",
+      "reducedMotion": true,
+      "nav": {
+        "ttfb": 709,
+        "dcl": 6426,
+        "load": 6428
+      },
+      "paint": {
+        "fcp": 2770,
+        "lcp": 2920,
+        "lcpEl": "IMG.",
+        "cls": 0.0034,
+        "tbt": 2,
+        "longTasks": 1
+      },
+      "heroReadyMs": null,
+      "hero": {
+        "tier": "n/a (poster)",
+        "tierHistory": [],
+        "dpr": null,
+        "sampledFps": null,
+        "gpu": null,
+        "webgl": false,
+        "live": false
+      },
+      "fps": {
+        "heroIdle": {
+          "fps": 120.3,
+          "frames": 361,
+          "p95ms": 9.1,
+          "worstMs": 9.3,
+          "janky": 0
+        },
+        "scroll": {
+          "fps": 119.9,
+          "frames": 839,
+          "p95ms": 9.1,
+          "worstMs": 25.8,
+          "janky": 0
+        }
+      },
+      "after": {
+        "heroRunningOffscreen": null,
+        "flavorsPinned": false,
+        "lenis": false,
+        "mapPins": 7,
+        "manifestoMinOpacity": 1,
+        "footerCredit": "Demo by DC Tech"
+      },
+      "mapCard": "Lantern Row",
+      "bytes": {
+        "initialKB": 105.7,
+        "initialByType": {
+          "html": 18,
+          "js": 56.6,
+          "woff2": 31.1
+        },
+        "initialRequests": 4,
+        "afterLoadKB": 5.3,
+        "afterLoadByType": {
+          "svg": 0.4,
+          "js": 4.9
+        },
+        "sceneChunkRequested": false
+      },
+      "consoleErrors": []
+    }
+  ],
+  "extra": {
+    "desktop simslow=40": {
+      "tierHistory": [
+        "high",
+        "medium"
+      ],
+      "settledFps": 106.9,
+      "dpr": 1
+    },
+    "desktop simslow=120": {
+      "tierHistory": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "settledFps": 99.4,
+      "dpr": 1
+    },
+    "mobile simslow=60": {
+      "tierHistory": [
+        "medium"
+      ],
+      "settledFps": 72,
+      "dpr": 1.5
+    },
+    "visibility": {
+      "runningVisible": true,
+      "runningWhenHidden": false,
+      "runningAfterReturn": true
+    }
+  }
+}
