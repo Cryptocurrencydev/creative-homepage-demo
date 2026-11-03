@@ -1,6 +1,7 @@
 import "./kit/style/kit.css";
 import "./kit/motion/motion.css";
 import { createCursor, createTransition, reveal, scrubWords, magnetic, squish, textRoll } from "./kit/motion/index.js";
+import { inject } from "@vercel/analytics";
 
 const css = `
 .kitpage{margin:0;background:var(--k-paper);color:var(--k-ink);font:400 var(--k-step-0)/1.5 var(--k-font);padding:0 var(--k-gutter) var(--k-space-xl)}
@@ -19,6 +20,9 @@ const css = `
 .kp-code{background:var(--k-ink);color:var(--k-paper);padding:var(--k-space-m);border-radius:var(--k-radius-m);overflow:auto;font:400 13px/1.6 var(--k-font-mono)}
 code{font-family:var(--k-font-mono);font-size:.9em}`;
 document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
+
+// Initialize Vercel Web Analytics
+inject();
 
 const colors = ["ink", "paper", "paper-2", "mute", "white", "tomato", "lime", "grape", "gum", "sky"];
 const cs = getComputedStyle(document.documentElement);
