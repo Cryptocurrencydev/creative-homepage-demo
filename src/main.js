@@ -11,10 +11,14 @@ import { FLAVORS } from "./data.js";
 import { initFlavors } from "./sections/flavors.js";
 import { initKinetic } from "./sections/kinetic.js";
 import { initFooter } from "./sections/footer.js";
+import { inject } from "@vercel/analytics";
 
 // Phones resize the viewport when the URL bar shows/hides; don't recompute
 // every trigger mid-scroll for that.
 ScrollTrigger.config({ ignoreMobileResize: true });
+
+// Initialize Vercel Web Analytics
+inject();
 
 const stats = (window.__wobl = window.__wobl || {});
 const root = document.documentElement;
