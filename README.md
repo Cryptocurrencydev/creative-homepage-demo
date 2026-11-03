@@ -4,7 +4,7 @@
 
 A one-page homepage for **WOBL**, a fictional jelly-soda brand. It was built as a creative-dev pitch: something people post about and send to a friend, and it still runs smoothly on a mid-range Android phone.
 
-Demo by DC Tech.
+Demo by [DC Tech](https://dctechltd.com).
 
 ## The moments
 
